@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="el-GR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> STORY </title>
+  <link rel="icon" href="./images/favicon.ico">
+  <style>
+  body {background-image:url(./images/sea.jpg); background-repeat: no-repeat; background-size:cover;}
+  body {overflow-x: hidden; overflow-y: hidden;}
+  
+ p {font-size:18px; text-align:justify; max-width:90%; margin-left:6%;}
+  
+  img {position: relative; display:inline; max-width:80%; scale: 120%;}
+  
+  .center-container {text-align: center;}
+
+  .sound:active {transform: translateY(6px);}
+	 
+   button{z-index:1000; background-color:rgb(180, 180, 180); color:black; border:2px solid gray; border-radius:10px;
+          font-family: Arial, Georgia, "Times New Roman", Times, serif; font-size:16px;
+		  display:inline-block; width:100%; padding:10px; text-align:center; margin: 0 auto;} 
+   button:hover {background-color:rgb(200, 200, 200); color:lime;}
+   button:active {box-shadow: 0 5px #666; transform: translateY(2px);}
+   
+   #playButton.clicked {filter: invert(100%);}
+  </style>
+  
+  <script>
+var images = new Array();
+function preloadImages(){
+    for (i=0; i < preloadImages.arguments.length; i++){
+
+         images[i] = new Image();
+
+        images[i].src = preloadImages.arguments[i];
+    }
+}
+preloadImages("./images/sea.jpg");
+</script>
+
+</head>
+
+<body>
+
+<div class="center-container"> 
+ <h2> Naval Warfare: Lost in Time  </h2>
+</div>
+
+<p> 
+ <strong> <i>
+Το 437 π.Χ., στην Κέρκυρα είχε ξεσπάσει ένας εμφύλιος πόλεμος μεταξύ δημοκρατικών και ολιγαρχικών. Δυο μεγάλοι ναύαρχοι μυστηριωδώς 
+εμφανίστηκαν στην Κέρκυρα του Α΄ Παγκοσμίου πολέμου και δημιουργήσαν έναν στόλο 6 πολεμικών πλοίων, κάποια από τα οποία ταξίδεψαν μαζί 
+τους από παλαιότερες περιόδους. Μην γνωρίζοντας ότι ο εμφύλιος έχει προ πολλού τελειώσει, οι ναύαρχοι είναι αποφασισμένοι 
+να εξολοθρεύσουν τον αντίπαλο τους και να κυριαρχήσει η πλευρά τους στο νησί. Ξαφνικά, η τελευταία μάχη ενός ξεχασμένου πολέμου ξεκινά…
+ </i> </strong> 
+</p>
+
+<audio id="sound-1" style="position:fixed">
+  <source src="./sounds/narration.wav" type="audio/mpeg">
+</audio>
+
+
+<div class="center-container">
+    <img style="width:20%; margin-top:15px; margin-left: auto;" src="./images/soundicon.webp" class="sound"  id="playButton" onclick="playAudio()"> 
+</div>
+
+<br> <br>
+<center> <button  type="button" onclick="window.location.href='../Scan/index.html'">Back to scanner</button> </center>
+
+<script>
+const playButton = document.getElementById('playButton');
+const audio = document.getElementById('sound-1');
+
+function toggleClicked() {
+    playButton.classList.toggle('clicked');
+}
+
+playButton.addEventListener('click', function() {
+    if (!audio.paused) 
+	{
+        audio.pause();
+    }
+	else
+	{
+    audio.play();
+	}
+	toggleClicked();
+});
+</script>
+
+<br>  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+</body>
+
+</html>
+
+
+
+
+
+
+

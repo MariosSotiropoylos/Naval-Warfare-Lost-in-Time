@@ -1,0 +1,164 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	 <title> Augmented Data Scanner </title>
+	 <link rel="icon" href="./favicon.ico">
+        <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+	<style>
+     body {background-image:url(./assets/images/Matrix.jpg); background-repeat: no-repeat; background-size:cover;}
+     body {overflow-x: hidden;}
+  
+     #example-start-button {background-color:rgb(180, 180, 180); color:black; border:2px solid gray; border-radius:10px;}
+     #example-start-button {display:inline; width:20%; padding:10px; text-align:center; margin:0 auto;} 
+     #example-start-button:hover {background-color:rgb(200, 200, 200); color:lime;}
+     #example-start-button:active {box-shadow: 0 5px #666; transform: translateY(2px);}
+     #example-start-button {font-family: Arial, Georgia, "Times New Roman", Times, serif; font-size:16px;}
+  
+     #example-stop-button {background-color:rgb(180, 180, 180); color:black; border:2px solid gray; border-radius:10px;}
+     #example-stop-button {display:inline; width:20%; padding:10px; text-align:center; margin:0 auto;} 
+     #example-stop-button:hover {background-color:rgb(200, 200, 200); color:red;}
+     #example-stop-button:active {box-shadow: 0 5px #666; transform: translateY(2px);}
+     #example-stop-button {font-family: Arial, Georgia, "Times New Roman", Times, serif; font-size:16px;}
+    </style>
+  
+    <script>
+     var images = new Array();
+     function preloadImages()
+	 {
+      for (i=0; i < preloadImages.arguments.length; i++)
+	  {
+
+         images[i] = new Image();
+
+        images[i].src = preloadImages.arguments[i];
+      }
+     }
+     preloadImages("./assets/images/Matrix.jpg");
+    </script>
+
+    <script>
+    //The DOMContentLoaded event listener waits for the HTML document to be fully loaded before executing the enclosed code.
+    document.addEventListener("DOMContentLoaded", function() {
+	const sceneEl = document.querySelector('a-scene');
+
+    //The arSystem variable is used to store a reference to the MindAR image system
+	let arSystem;
+
+    //It waits for the A-Frame scene to be loaded and then it retrieves the AR system from the scene
+    sceneEl.addEventListener('loaded', function () 
+	{
+	  arSystem = sceneEl.systems["mindar-image-system"];
+	});
+	
+    //Event listeners are set up for buttons to control AR functionality
+	const plane0 = document.querySelector('#plane0');
+    const plane1 = document.querySelector('#plane1');
+	const plane2 = document.querySelector('#plane2');
+    const plane3 = document.querySelector('#plane3');
+	const plane4 = document.querySelector('#plane4');
+	const plane5 = document.querySelector('#plane5');
+	const plane6 = document.querySelector('#plane6');
+
+	const startButton = document.querySelector("#example-start-button");
+	const stopButton = document.querySelector("#example-stop-button");
+
+	startButton.addEventListener('click', () => {
+	  console.log("start");
+	  arSystem.start(); // start AR
+	});
+	
+	stopButton.addEventListener('click', () => {
+	  arSystem.stop(); // stop AR
+	});
+
+    // detect click event
+	plane0.addEventListener("click", event => {
+	  console.log("plane click");
+    window.location.href = "../Boardgame Site/index.html";
+	});
+
+    plane1.addEventListener("click", event => {
+	  console.log("plane click");
+    window.location.href = "../Boardgame Site/trirene.html";
+	});
+	
+    plane2.addEventListener("click", event => {
+	  console.log("plane click");
+    window.location.href = "../Boardgame Site/dromonas.html";
+	});
+	
+    plane3.addEventListener("click", event => {
+	  console.log("plane click");
+    window.location.href = "../Boardgame Site/frigate.html";
+	});
+	
+	plane4.addEventListener("click", event => {
+	  console.log("plane click");
+    window.location.href = "../Boardgame Site/eydromos.html";
+	});
+	
+	plane5.addEventListener("click", event => {
+	  console.log("plane click");
+    window.location.href = "../Boardgame Site/battleship.html";
+	});
+	
+	plane6.addEventListener("click", event => {
+	  console.log("plane click");
+    window.location.href = "../Boardgame Site/submarine.html";
+	});
+      });
+    </script>
+	
+  </head>
+  
+  <body>
+  
+      <br>
+      <button id="example-start-button" style="position: absolute; z-index: 1000"><strong>Scan</strong></button> 
+	  <br> <br> <br>
+	  <button id="example-stop-button" style="position: absolute; z-index: 1000"><strong>Stop</strong></button>
+
+  <a-scene mindar-image="imageTargetSrc: ./assets/markers/sintel.mind; autoStart: false;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="near: 10; far: 10000; objects: .clickable"></a-camera>
+
+    <a-entity id = "target0" mindar-image-target="targetIndex: 0">
+    <a-plane id = "plane0" class="clickable" color="gray" opacity="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+    <a-text id="text0" value="About the story " color="black" position="-0.45 0 0" scale="0.5 0.5 0.1"></a-text>
+	</a-entity>
+
+    <a-entity id="target1" mindar-image-target="targetIndex: 1">
+	  <a-plane id="plane1" class="clickable" color="gray" opacity="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+     <a-text id="text0" value="About the trirene " color="black" position="-0.45 0 0" scale="0.5 0.5 0.1"></a-text>
+	</a-entity>
+   
+    <a-entity id="target2" mindar-image-target="targetIndex: 2">
+	  <a-plane id="plane2" class="clickable" color="gray" opacity="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+     <a-text id="text0" value="About dromonas " color="black" position="-0.45 0 0" scale="0.5 0.5 0.1"></a-text>
+	</a-entity>
+   
+    <a-entity id="target3" mindar-image-target="targetIndex: 3">
+	  <a-plane id="plane3" class="clickable" color="gray" opacity="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+     <a-text id="text0" value="About the frigate " color="black" position="-0.45 0 0" scale="0.5 0.5 0.1"></a-text>
+	</a-entity>
+   
+    <a-entity id="target4" mindar-image-target="targetIndex: 4">
+	  <a-plane id="plane4" class="clickable" color="gray" opacity="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+     <a-text id="text0" value="About eydromos " color="black" position="-0.45 0 0" scale="0.5 0.5 0.1"></a-text>
+	</a-entity>
+   
+    <a-entity id="target5" mindar-image-target="targetIndex: 5">
+	  <a-plane id="plane5" class="clickable" color="gray" opacity="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+     <a-text id="text0" value="About the battleship " color="black" position="-0.45 0 0" scale="0.4 0.4 0.1"></a-text>
+	</a-entity>
+   
+    <a-entity id="target6" mindar-image-target="targetIndex: 6">
+	  <a-plane id="plane6" class="clickable" color="gray" opacity="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+     <a-text id="text0" value="About the submarine " color="black" position="-0.45 0 0" scale="0.4 0.4 0.1"></a-text>
+	</a-entity>
+   </a-scene>
+   
+  </body>
+  
+</html>
